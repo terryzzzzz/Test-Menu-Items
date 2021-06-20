@@ -1,4 +1,5 @@
 module.exports = {
+  mode: 'jit',
   purge: ['./storage/framework/views/*.php',
     './resources/**/*.blade.php',
     './resources/**/*.js',
@@ -8,7 +9,10 @@ module.exports = {
     extend: {},
   },
   variants: {
-    extend: {},
+    extend: {
+      borderWidth: ['hover', 'focus'],
+      display: ['hover', 'focus', 'group-focus'],
+    },
   },
   plugins: [],
 }

@@ -15,8 +15,9 @@ class ItemsController extends Controller
         $this->importArr = array();
     }
 
-    public function index()
+    public function requestData()
     {
+        Items::truncate();
         $response = Http::get('https://dev.shepherd.appoly.io/fruit.json');
         $menuItems = $response['menu_items'];
         $this->decodeNestedArray(null, $menuItems);
