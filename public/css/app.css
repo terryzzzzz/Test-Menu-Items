@@ -645,6 +645,9 @@ video {
 	margin-left: auto;
 	margin-right: auto;
 }
+.mr-2 {
+	margin-right: 0.5rem;
+}
 .ml-2 {
 	margin-left: 0.5rem;
 }
@@ -656,9 +659,6 @@ video {
 }
 .mt-2 {
 	margin-top: 0.5rem;
-}
-.mr-2 {
-	margin-right: 0.5rem;
 }
 .mt-4 {
 	margin-top: 1rem;
@@ -866,12 +866,6 @@ video {
 .focus\:outline-none:focus {
 	outline: 2px solid transparent;
 	outline-offset: 2px;
-}
-.group:focus .group-focus\:block {
-	display: block;
-}
-.peer:focus ~ .peer-focus\:block {
-	display: block;
 }
 @media (min-width: 640px) {
 
