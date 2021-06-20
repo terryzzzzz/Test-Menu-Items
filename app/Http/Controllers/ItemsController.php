@@ -44,6 +44,16 @@ class ItemsController extends Controller
         return view('index', compact('items'));
     }
 
+    public function edit(Request $request)
+    {
+        $id = $request->id;
+        $label = $request->label;
+        $item = Items::find($id);
+        $item->label = $label;
+        $item->save();
+        return response('success', 200);
+    }
+
     public function decodeNestedArray($parent, $array)
     {
         foreach ($array as $object) {

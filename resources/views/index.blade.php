@@ -24,7 +24,7 @@
                 <li class="flex items-center">
                     <span class="mr-2">-</span>
                     <input class="itemInput peer py-1 px-2 rounded-md border border-gray-300 border-opacity-0 focus:border-opacity-100 focus:outline-none transition" data-id={{ $item->id }} type="text" value="{{ $item->label }}">
-                    <button class="hidden peer-focus:block bg-green-600 py-1 px-2 text-white text-xs rounded-lg ml-2">Update</button>
+                    <button class="itemSubmit block bg-green-600 py-1 px-2 text-white text-xs rounded-lg ml-2 focus:outline-none">Update</button>
                 </li>
                 <ul class="ml-5 list-disc">
                     @if(count($item->childitems))
@@ -42,11 +42,26 @@
 
 <script>
     $(document).ready(function() {
-        $('input.itemInput').each(function() {
-            $(this).change(function() {
-                console.log("Data change, id: ", $(this).data('id'));
+        $('button.itemSubmit').each(function() {
+            $(this).click(function() {
+                const label = $(this).siblings('input.itemInput').val();
+                const id = $(this).siblings('input.itemInput').data('id');
+
+                $.post('/api/edit', {
+                        id: id,
+                        label: label
+                    },
+                    function(data, status) {
+                        if (status === 'success') {
+                            alert("Data has been updated successfully.");
+                        } else {
+                            alert("Sorry but data failed to update.");
+                        }
+                        location.reload(true);
+                    })
             })
         })
+
     })
 </script>
 
